@@ -10,7 +10,10 @@ public class Game {
     private Crupier crupier;
     private ArrayList<Player> players = new ArrayList<>();
 
+    private Mazo mazo = new Mazo();
+
     static Scanner sc = new Scanner(System.in);
+
 
     public void showMenu()
     {
@@ -53,49 +56,7 @@ public class Game {
         }
     }
 
-    private void init()
-    {
 
-        // En caso que sea un solo jugador, preguntar si quiere jugar con bots
-        if ( this.players.size() == 1 )
-        {
-            System.out.println("¿Quieres jugar con bots? (Si,s / cualquier otro para cancelar)");
-            String option = sc.nextLine().toUpperCase();
-
-            if ( option.equals("SI") || option.equals("S")) {
-                for (int i = 0; i < 5; i++) {
-                    Player p = new Player();
-                    p.setName( Name.generate() );
-                    players.add( p );
-                }
-            }
-        }
-
-        if ( this.crupier == null )
-        {
-            this.crupier = new Crupier( Name.generate() );
-        }
-
-        if (players.isEmpty())
-        {
-            System.out.println("-------- TIENEN QUE EXISTIR JUGADORES PARA PODER JUGAR --------");
-            this.showMenu();
-            return;
-        }
-
-        this.start();
-    }
-
-    public void start()
-    {
-        Table table = Table.instance();
-
-        for (Player p : players) {
-            table.addRow( p.toString() );
-        }
-
-        table.print();
-    }
 
     private void registerPlayer()
     {
@@ -119,6 +80,73 @@ public class Game {
         player.setIsBot(false);
 
         this.players.add( player );
+    }
+
+    private void init()
+    {
+
+        // En caso que sea un solo jugador, preguntar si quiere jugar con bots
+        if ( this.players.size() == 1 )
+        {
+            System.out.println("¿Quieres jugar con bots? (Si,s / cualquier otro para cancelar)");
+            String option = sc.nextLine().toUpperCase();
+
+            if ( option.equals("SI") || option.equals("S")) {
+                for (int i = 0; i < 5; i++) {
+                    Player p = new Player();
+                    p.setName( Name.generate() );
+                    players.add( p );
+                }
+            }
+        }
+
+        if ( this.crupier == null )
+        {
+            this.crupier = new Crupier( Name.generate() );
+        }
+
+        this.mazo.generate();
+        this.startRound( 20 );
+    }
+
+    public void startRound(int bet)
+    {
+        this.checkPlayersMoney(bet);
+
+        if (players.isEmpty())
+        {
+            MC.title.outline("MUCHAS GRACIAS POR JUGAR");
+            this.showMenu();
+            return;
+        }
+
+
+        Table table = Table.instance();
+
+        for (Player p : players) {
+            table.addRow( p.toString() );
+        }
+
+        table.print();
+    }
+
+    /**
+     * Verifica si cada jugador tiene saldo suficiente para poder continuar
+     * @param bet La cantidad apostada en el juego
+     */
+    private void checkPlayersMoney(int bet)
+    {
+        for (Player p : players) {
+            if ( !p.hasEnoughMoney(bet) )
+            {
+                if ( !p.isBot() )
+                {
+                    // TODO: Funcion de pedir al banco, prestamista
+                    System.out.println("PIDE AL BANCO");
+                }
+                this.players.remove( p );
+            }
+        }
     }
 
 }

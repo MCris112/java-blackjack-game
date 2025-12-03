@@ -45,6 +45,11 @@ public class Player {
         isBot = bot;
     }
 
+    public boolean hasEnoughMoney( int bet )
+    {
+        return this.money >= bet;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
