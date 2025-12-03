@@ -1,10 +1,11 @@
 public class Main {
 
     static void main() {
-        Mazo mazo = new Mazo();
 
-        mazo.generate();
+        // Creamos la clase para poder llamar la function init que
+        //iniciara el juego con el menu en carga
+        Game game = new Game();
 
-        mazo.show();
+        game.showMenu();
     }
 }
