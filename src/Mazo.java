@@ -12,6 +12,9 @@ public class Mazo {
      */
     public void generate()
     {
+        //Al generar tenemos que limpiar las cartas que ya existen para generar desde 0
+        this.cartas.clear();
+
         generateBySymbol( this.cartas, Figure.CORAZONES );
         generateBySymbol( this.cartas, Figure.PICAS );
         generateBySymbol( this.cartas, Figure.TREBOLES );

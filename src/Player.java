@@ -2,13 +2,16 @@ import java.util.ArrayList;
 
 public class Player {
     private String name;
-    private int money;
+    private int money = 100;
 
-    private boolean isBot;
+    // Por defecto si se crea vacio será un bot
+    private boolean isBot = true;
 
     private ArrayList<Carta> cartas = new ArrayList<>();
 
     //Constructores
+
+    public Player() {}
 
     public Player(String name, int money, boolean isBot) {
         this.name = name;
@@ -38,7 +41,22 @@ public class Player {
         return isBot;
     }
 
-    public void setBot(boolean bot) {
+    public void setIsBot(boolean bot) {
         isBot = bot;
+    }
+
+    public boolean hasEnoughMoney( int bet )
+    {
+        return this.money >= bet;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", money=" + money +
+                ", isBot=" + isBot +
+                ", cartas=" + cartas +
+                '}';
     }
 }
