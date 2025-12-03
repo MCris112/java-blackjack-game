@@ -104,7 +104,7 @@ public class Game {
         {
             this.crupier = new Crupier( Name.generate() );
         }
-
+        //LLamadaFuncCantidadApuesta
         this.mazo.generate();
         this.startRound( 20 );
     }
