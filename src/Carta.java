@@ -1,3 +1,5 @@
+import Wallet.Figure;
+
 public class Carta {
 
     private Figure symbol;

@@ -1,3 +1,5 @@
+package Wallet;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -59,23 +61,8 @@ public class Wallet {
     }
 
     //plusChip
-    public int plusChip(String option, int totalBet) {
-        TypeChips tipo = parseType(option);
+    public void plusChip(String option, int cantidad) {
 
-        //Llamada a funcion auxiliar de Chips
-        if (!realColor(tipo)) {
-            return totalBet;
-        }
-
-        //Se agrega y acumula una ficha
-        chips.add(new Chips(1, tipo));
-        totalBet += Chips.unitValueOf(tipo);
-
-        //Impresiones
-        eyeWallet();
-        System.out.println("Total acumulado: " + totalBet);
-        
-        return totalBet;
     }
 
     //MinuChip
@@ -94,7 +81,7 @@ public class Wallet {
 
         if (disponibles < cantidad) {
             System.out.println("No tienes suficientes fichas de " + tipo + ". Tienes: " + disponibles);
-        return;
+            return;
         }
 
         //Quitanto fichas
@@ -151,7 +138,7 @@ public class Wallet {
 
     @Override
     public String toString() {
-        return "Wallet [chips=" + chips + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+        return "Wallet.Wallet [chips=" + chips + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
                 + super.toString() + "]";
     }
 

@@ -1,3 +1,5 @@
+package Wallet;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -6,7 +8,7 @@ import Utilities.Table;
 public class Betting {
 
     //Atributos
-    private List<Chips> betChips;     
+    private List<Chips> betChips;
     private Wallet wallet;
     private Scanner sc;
 
@@ -43,11 +45,10 @@ public class Betting {
         this.wallet = wallet;
     }
 
-    //Metodos//
+    //Metodos
 
     //ActionBetMenu
     public void actionBetMenu() {
-        Scanner sc = new Scanner(System.in);
         String option;
         int totalBet = 0;
         boolean end = false;
@@ -71,8 +72,12 @@ public class Betting {
                     break;
 
                 default:
-                if (valido(option)) {   
-                    totalBet = wallet.plusChip(option, totalBet);
+                if (valido(option)) {
+                    TypeChips tipoFicha = parseType(option);
+                    wallet.minusChip(option, 1);
+                    betChips.add(new Chips(1, parseType(option)));
+                    totalBet += Chips.unitValueOf(parseType(option));
+                    System.out.println("Has puesto una ficha de " + option + " en la mesa. Apuesta total: " + totalBet);
                 } else {
                     System.out.println("Opción inválida.");
                 }
@@ -111,5 +116,14 @@ public class Betting {
             option.equals("morado")         ||
             option.equals("naranja")        ||       
             option.equals("anaranjado");      
+    }
+
+    // Funcion Auxiliar, convierte string a enum
+    private TypeChips parseType(String option) {
+        try {
+            return TypeChips.valueOf(option.substring(0, 1).toUpperCase() + option.substring(1).toLowerCase());
+        } catch (IllegalArgumentException e) {
+            return null; // Devuelve null si el color no existe en el enum
+        }
     }
 }

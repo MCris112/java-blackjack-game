@@ -1,6 +1,6 @@
 import Utilities.Table;
+import Wallet.Figure;
 
-import javax.smartcardio.Card;
 import java.util.ArrayList;
 
 public class Mazo {

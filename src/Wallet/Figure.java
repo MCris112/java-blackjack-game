@@ -1,3 +1,5 @@
+package Wallet;
+
 public enum Figure {
     PICAS,
     CORAZONES,

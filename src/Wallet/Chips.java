@@ -1,3 +1,5 @@
+package Wallet;
+
 public class Chips {
 
     private int amount;
@@ -42,14 +44,14 @@ public class Chips {
     //Debe ser estatico, ya que ncs calcular el valor de 1 ficha sin tener objeto
     public static double unitValueOf(TypeChips t) { 
         switch (t) {
-            case Blanco: return 1;
+            case TypeChips.Blanco: return 1;
             // case Rosa: return 2.5; Suprimido para evitar complicaciones NaranjaMoradoBlancoAzulRojoVerdeNegro
-            case Rojo: return 5;
-            case Azul: return 10;
-            case Verde: return 25;
-            case Negro: return 100;
-            case Morado: return 500;
-            case Naranja: return 1000;
+            case TypeChips.Rojo: return 5;
+            case TypeChips.Azul: return 10;
+            case TypeChips.Verde: return 25;
+            case TypeChips.Negro: return 100;
+            case TypeChips.Morado: return 500;
+            case TypeChips.Naranja: return 1000;
             default: return 0;
         }
     }
