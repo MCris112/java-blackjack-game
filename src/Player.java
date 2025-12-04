@@ -1,22 +1,30 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
     private String name;
-    private int money = 100;
+    private double money;
+    private Wallet wallet;
 
-    // Por defecto si se crea vacio será un bot
+    //Por defecto si se crea vacio será un bot
     private boolean isBot = true;
 
     private ArrayList<Carta> cartas = new ArrayList<>();
 
     //Constructores
 
-    public Player() {}
+    public Player() {//Modificado para que Bot tenga un numero ramson
+        Random random = new Random();
+        this.money = 200 + random.nextInt(301); //200 a 300
+        this.wallet = new Wallet(); //Crea un nuevo Wallet vacio
+        this.wallet.startWallet(this.money); //Llena el wallet con chips x money
+    }
 
-    public Player(String name, int money, boolean isBot) {
+    public Player(String name, double money, boolean isBot, Wallet wallet) {
         this.name = name;
         this.money = money;
         this.isBot = isBot;
+        this.wallet = wallet;
     }
 
     //Getters y Setters
@@ -29,7 +37,7 @@ public class Player {
         this.name = name;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
@@ -49,6 +57,16 @@ public class Player {
     {
         return this.money >= bet;
     }
+    
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
+    //Metodos
 
     @Override
     public String toString() {
@@ -59,4 +77,5 @@ public class Player {
                 ", cartas=" + cartas +
                 '}';
     }
+
 }

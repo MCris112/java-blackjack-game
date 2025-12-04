@@ -141,7 +141,7 @@ public class Game {
             {
                 if ( !p.isBot() )
                 {
-                    // TODO: Funcion de pedir al banco, prestamista
+                    // TODO: Vender riñon o conea
                     System.out.println("PIDE AL BANCO");
                 }
                 this.players.remove( p );

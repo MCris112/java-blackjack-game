@@ -1,6 +1,5 @@
-public enum MoneyType {
+public enum TypeChips {
     Blanco,
-    Rosa,
     Rojo,
     Azul,
     Verde,
