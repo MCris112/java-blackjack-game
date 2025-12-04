@@ -113,6 +113,7 @@ public class Game {
     {
         this.checkPlayersMoney(bet);
 
+        // Si no hay más jugadores la partida termina
         if (players.isEmpty())
         {
             MC.title.outline("MUCHAS GRACIAS POR JUGAR");
@@ -120,6 +121,17 @@ public class Game {
             return;
         }
 
+        // Dar carta a cada jugador
+        this.mazo.giveCardToPlayers( this.players );
+
+        //Dar carta al crupier
+        this.mazo.giveCardToCrupier( this.crupier );
+
+        // Primera carta es AS?
+        if ( this.crupier.isFirstAs() )
+        {
+            //TODO preguntar si quiere asegurar?
+        }
 
         Table table = Table.instance();
 
