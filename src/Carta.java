@@ -69,6 +69,11 @@ public class Carta {
         return CardRank.AS;
     }
 
+    public boolean isRank(CardRank cardRank )
+    {
+        return this.rank == cardRank;
+    }
+
     @Override
     public String toString() {
         return "Carta{" +

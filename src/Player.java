@@ -66,6 +66,12 @@ public class Player {
         this.wallet = wallet;
     }
 
+
+    public void giveCard( Carta card )
+    {
+        this.cartas.add( card );
+    }
+
     //Metodos
 
     @Override
