@@ -125,7 +125,8 @@ public class Game {
         this.mazo.giveCardToPlayers( this.players );
 
         //Dar carta al crupier
-        this.mazo.giveCardToCrupier( this.crupier );
+        this.mazo.giveCardToCrupier(
+                this.crupier );
 
         // Primera carta es AS?
         if ( this.crupier.isFirstAs() )

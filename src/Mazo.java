@@ -40,6 +40,8 @@ public class Mazo {
         {
             this.generate();
         }
+
+        // TODO Mostrar mensaje de mazo nuevo
     }
 
     public boolean isEmpty()
