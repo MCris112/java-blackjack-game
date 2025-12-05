@@ -1,6 +1,5 @@
 import Utilities.Table;
 
-import javax.smartcardio.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,13 +15,13 @@ public class Mazo {
         //Al generar tenemos que limpiar las cartas que ya existen para generar desde 0
         this.cartas.clear();
 
-        generateBySymbol( this.cartas, Figure.CORAZONES );
-        generateBySymbol( this.cartas, Figure.PICAS );
-        generateBySymbol( this.cartas, Figure.TREBOLES );
-        generateBySymbol( this.cartas, Figure.DIAMANTES );
+        generateBySymbol( this.cartas, Crupier.Figure.CORAZONES );
+        generateBySymbol( this.cartas, Crupier.Figure.PICAS );
+        generateBySymbol( this.cartas, Crupier.Figure.TREBOLES );
+        generateBySymbol( this.cartas, Crupier.Figure.DIAMANTES );
     }
 
-    public static void generateBySymbol( ArrayList<Carta> cartas, Figure symbol )
+    public static void generateBySymbol( ArrayList<Carta> cartas, Crupier.Figure symbol )
     {
         for (int i = 1; i < 14; i++) {
             cartas.add( new Carta(symbol, i, Carta.getRank(i)) );

@@ -1,3 +1,5 @@
+import Wallet.Wallet;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,7 +18,7 @@ public class Player {
     public Player() {//Modificado para que Bot tenga un numero ramson
         Random random = new Random();
         this.money = 200 + random.nextInt(301); //200 a 300
-        this.wallet = new Wallet(); //Crea un nuevo Wallet vacio
+        this.wallet = new Wallet(); //Crea un nuevo Wallet.Wallet vacio
         this.wallet.startWallet(this.money); //Llena el wallet con chips x money
     }
 

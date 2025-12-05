@@ -1,12 +1,12 @@
 public class Carta {
 
-    private Figure symbol;
+    private Crupier.Figure symbol;
 
     private int value;
 
     private CardRank rank;
 
-    public Carta(Figure symbol, int value, CardRank rank) {
+    public Carta(Crupier.Figure symbol, int value, CardRank rank) {
         this.symbol = symbol;
         this.value = value;
         this.rank = rank;
@@ -18,7 +18,7 @@ public class Carta {
         }
     }
 
-    public Figure getSymbol() {
+    public Crupier.Figure getSymbol() {
         return symbol;
     }
 

@@ -4,7 +4,10 @@ import Utilities.Table;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.Random;
+import java.util.Optional;
+import Wallet.Betting;
+ 
 public class Game {
 
     private Crupier crupier;
@@ -56,8 +59,6 @@ public class Game {
         }
     }
 
-
-
     private void registerPlayer()
     {
         if ( this.crupier == null ) {
@@ -104,9 +105,34 @@ public class Game {
         {
             this.crupier = new Crupier( Name.generate() );
         }
-        //LLamadaFuncCantidadApuesta
+        //Llamada para ejecutar betMenu     
+        int totalBet = 0; //Cantidad por defecto
+ 
+        //1er jugador que no sea un bot.
+        Optional<Player> humanPlayerOpt = players.stream().filter(p -> !p.isBot()).findFirst();
+ 
+        if (humanPlayerOpt.isPresent()) {
+            Player humanPlayer = humanPlayerOpt.get();
+            System.out.println("\n--- Turno de apuesta para " + humanPlayer.getName() + " ---");
+            
+            //Entrada_datos
+            System.out.print("Introduce tu dinero inicial: ");
+            double money = Double.parseDouble(sc.nextLine());
+            humanPlayer.getWallet().startWallet(money);
+            humanPlayer.getWallet().eyeWallet();
+
+            //Nueva apuesta en creacion
+            Betting betting = new Betting();
+            betting.setWallet(humanPlayer.getWallet()); 
+            betting.actionBetMenu();
+            totalBet = betting.calcTotalBet(); 
+        } else {
+            System.out.println("Bots en la mesa. Iniciando con apuesta por defecto.");
+            totalBet = new Random().nextInt(91) + 10; 
+        }
+ 
         this.mazo.generate();
-        this.startRound( 20 );
+        this.startRound(totalBet);
     }
 
     public void startRound(int bet)

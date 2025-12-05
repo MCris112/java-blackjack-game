@@ -1,11 +1,13 @@
+package Wallet;
+
 public enum TypeChips {
-    Blanco,
-    Rojo,
-    Azul,
-    Verde,
-    Negro,
-    Morado,
-    Naranja
+    BLANCO, 
+    ROJO, 
+    AZUL, 
+    VERDE, 
+    NEGRO, 
+    MORADO, 
+    NARANJA
 }
 
 // Blanco(1),
