@@ -1,18 +1,22 @@
 package Wallet;
 
+import Utilities.ChipTransp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Wallet {
     
-    private ArrayList<Chips> chips; 
-    public Wallet(){ chips = new ArrayList<>();}
-    
-    //Constructor
+    //Atributos
+    private ArrayList<Chips> chips;
+    private ChipTransp chipTransp;
 
-    public Wallet(ArrayList<Chips> chips) {
-        this.chips = chips;
+    //ConstructorS
+    public Wallet(){
+        this.chips = new ArrayList<>();
+        this.chipTransp = new ChipTransp(this.chips);
     }
+    
+    // public Wallet(ArrayList<Chips> chips) 
 
     //Get and Setters
 
@@ -28,22 +32,23 @@ public class Wallet {
 
     //Inicializar wallet con chips
     public void startWallet(double money) {
-        TypeChips[] types = TypeChips.values();
-        Arrays.sort(types, (a, b)   ->  Double.compare(Chips.unitValueOf(b), 
-                                        Chips.unitValueOf(a)));
+        /* Limpiar previo a iniciar */
+        chips.clear();
+        TypeChips[] types = TypeChips.values(); 
+        Arrays.sort(types, (a, b) -> Double.compare(Chips.valueOfType(b), Chips.valueOfType(a)));
 
-        //Reparticion_Fichas
+        /* Repartición de fichas */
         for (TypeChips type : types) {
-            //Variables Locales quantity, value
-            double valueCoin = Chips.unitValueOf(type); 
-            //Cuantas chips caben
+            double valueCoin = Chips.valueOfType(type);
             int quantity = (int)(money / valueCoin);
-            //Un objeto por cada chip
-            for (int i = 0; i < quantity; i++) {
-                chips.add(new Chips(1, type));
+
+            if (quantity > 0) {
+                /* Entrada x tipoFicha, inicilizar de no haber */
+                chips.add(new Chips(quantity, type));
+                money -= quantity * valueCoin;
             }
-            money -= quantity * valueCoin;
         }
+
         //Sobra...
         if (money > 0) {
             System.out.println("Sobra: " + money);
@@ -60,80 +65,56 @@ public class Wallet {
         }
     }
 
-    //plusChip
-    public void plusChip(String option, int cantidad) {
+    //Aplicacion de Semilla y la Utilidad que la brinda
 
-    }
-
-    //MinuChip
-    public void minusChip(String color, int cantidad) {
-    
-        //Conversion
+    //Dado que la utilidad les ayuda, solo validadcalidad el color
+    public void plusChip(String color, int amount) {
         TypeChips tipo = parseType(color);
-
-        //Llamada a validacion
-        if (!realColor(tipo)) {
-        return;
-        }
-    
-        //LLamda al contador
-        int disponibles = contarFichas(tipo);
-
-        if (disponibles < cantidad) {
-            System.out.println("No tienes suficientes fichas de " + tipo + ". Tienes: " + disponibles);
-            return;
+        if (!realColor(tipo)){return;}
+            chipTransp.plusChip(tipo, amount);
         }
 
-        //Quitanto fichas
-        for (Chips c : chips) {
-            if (c.getType() == tipo) {
-                int quitar = Math.min(c.getAmount(), cantidad);
-                c.setAmount(c.getAmount() - quitar);
-                cantidad -= quitar;
-                if (cantidad == 0) break;
-            }
+    //Aqui, se agrega la imposibilidad de -0
+    public boolean minusChip(String color, int amount) {
+        TypeChips tipo = parseType(color);
+        if (!realColor(tipo)){return false;}
+
+        if (amount <= 0) {
+        System.out.println("La cantidad debe ser mayor que cero.");
+        return false;
         }
 
-        //Imprimir
-        System.out.println("Se han quitado fichas de " + tipo);
-        eyeWallet();
-    }
-
-    //Funcion Axiliar, convierte string a enum
-    private TypeChips parseType(String option) {
-        try {
-            return TypeChips.valueOf(option.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return null;
+        int disponibles = chipTransp.getPlayMount(tipo);
+        if (disponibles < amount) {
+            System.out.println("No tienes suficientes fichas de " + tipo);
+            return false; 
         }
-    }
-
-    //Funcion Auxiliar, si es un colo real
-    public static boolean realColor(TypeChips tipo) {
-        if (tipo == null) {
-            System.out.println("Ese color no existe.");
-            return false;
-        }
+            
+        chipTransp.minusChip(tipo, amount);
         return true;
     }
 
-    //ContadorFichas-Existentes
-    private int contarFichas(TypeChips tipo) {
-        int contador = 0;
-        for (Chips c : chips) {
-            if (c.getType() == tipo) {
-            contador++;
-            }
-        }
-        return contador;
-    }
 
-    
+    // /* ContadorFichas-Existentes */
+    // private int contarFichas(TypeChips tipo) {
+    //     int contador = 0;
+    //     for (Chips c : chips) {
+    //         if (c.getType() == tipo) {
+    //         contador++;
+    //         }
+    //     }
+    //     return contador;
+    // }
+
     //ImprimirColeccion
     public void eyeWallet() {
+        System.out.println();
+        System.out.println("--- Monedero Actual ---");
+        System.out.println();
         for (Chips c : chips) {
             System.out.println(c);
         }
+        System.out.println();
     }
 
     @Override

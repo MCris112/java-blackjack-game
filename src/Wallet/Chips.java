@@ -2,24 +2,13 @@ package Wallet;
 
 public class Chips {
 
-    private int amount;
+    private int amount; //Cantidad de fichas de este tipo
     private TypeChips type; //Tipo Ficha
 
     //Constructor
-    
-    public Chips(int amount, TypeChips type) {
+    public Chips(TypeChips type, int  amount) {
         this.amount = amount;
         this.type = type;
-    }
-    
-    //gERt ans setters
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 
     public TypeChips getType() {
@@ -30,37 +19,76 @@ public class Chips {
         this.type = type;
     }
 
-    public double getTotalValue() {
-        return amount * unitValueOf(type);
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
-    public double getUnitValue() {
-        return unitValueOf(type);
+    public int getAmount() {
+        return amount;
     }
 
     //Metodos
 
-    //Switch Case para asignar valor
-    //Debe ser estatico, ya que ncs calcular el valor de 1 ficha sin tener objeto
-    public static double unitValueOf(TypeChips t) { 
+    public double getTotalValue()
+    {
+        return this.amount * valueOfType(this.type)
+    }
+    /**
+     * Remover la cantidad de fichas
+     * @param cantRemove la cantidad a remover
+     * @return si devuelve verdadero es que la lista quedo vacia
+     */
+    public boolean remove( int cantRemove )
+    {
+        this.amount -= cantRemove;
+
+        System.out.println("Has quitado " + cantRemove + " fichas de " + this.type);
+
+        if ( amount < 0)
+            return true;
+
+        return false;
+    }
+
+    /**
+     * Switch Case para asignar valor, ahora es int, me olvide cambiarlo tras
+     * Debe ser estatico, ya que ncs calcular el valor de 1 ficha sin tener objeto
+     * @param t el tipo al cual se quiere obtener el valor
+     * @return
+     */
+    public static double valueOfType(TypeChips t) {
         switch (t) {
-            case TypeChips.Blanco: return 1;
+            case BLANCO: return 1;
             // case Rosa: return 2.5; Suprimido para evitar complicaciones NaranjaMoradoBlancoAzulRojoVerdeNegro
-            case TypeChips.Rojo: return 5;
-            case TypeChips.Azul: return 10;
-            case TypeChips.Verde: return 25;
-            case TypeChips.Negro: return 100;
-            case TypeChips.Morado: return 500;
-            case TypeChips.Naranja: return 1000;
+            case ROJO: return 5;
+            case AZUL: return 10;
+            case VERDE: return 25;
+            case NEGRO: return 100;
+            case MORADO: return 500;
+            case NARANJA: return 1000;
             default: return 0;
+        }
+    }
+
+    /**
+     * Funcion Aux, convierte string a enum
+     * @param option el texto del color para usar
+     * @return el tipo o devuelve null en caso de no encontrar
+     */
+    public static TypeChips parseType(String option) {
+        try {
+            return TypeChips.valueOf(option.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return null;
         }
     }
 
     @Override
     public String toString() {
-        return amount +
-                ", fichas de: " + type +
-                "y cada 1 vale: " + getUnitValue() + 
-                ", total: " + getTotalValue() + ")";
+        return "Chips{" +
+                "type=" + type +
+                ", cantidad=" + amount +
+                ", valor total="+valueOfType(type)+
+                " }";
     }
 }

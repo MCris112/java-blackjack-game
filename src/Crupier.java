@@ -36,4 +36,11 @@ public class Crupier {
 
         return false;
     }
+
+    public enum Figure {
+        PICAS,
+        CORAZONES,
+        DIAMANTES,
+        TREBOLES
+    }
 }
