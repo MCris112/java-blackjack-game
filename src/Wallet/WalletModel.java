@@ -1,24 +1,21 @@
 package Wallet;
 
+import Entity.Player;
 import Utilities.ChipTransp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Wallet {
+public class WalletModel {
     
     //Atributos
-    private ArrayList<Chips> chips;
+    private ArrayList<Chips> chips = new ArrayList<>();
     private ChipTransp chipTransp;
 
     //ConstructorS
-    public Wallet(){
-        this.chips = new ArrayList<>();
+    public WalletModel(){
         this.chipTransp = new ChipTransp(this.chips);
     }
-    
-    // public Wallet(ArrayList<Chips> chips) 
 
-    //Get and Setters
 
     public ArrayList<Chips> getChips() {
         return chips;
@@ -28,12 +25,16 @@ public class Wallet {
         this.chips = chips;
     }
 
-    //Metodos
-
-    //Inicializar wallet con chips
-    public void startWallet(double money) {
+    /**
+     * Inicializar wallet con chips
+     * @param player pasar objeto jugador para pdoer quitar dinero y agregar fichas
+     */
+    public void startWallet(Player player) {
         /* Limpiar previo a iniciar */
         chips.clear();
+
+        double money = player.getMoney();
+
         TypeChips[] types = TypeChips.values(); 
         Arrays.sort(types, (a, b) -> Double.compare(Chips.valueOfType(b), Chips.valueOfType(a)));
 
@@ -44,7 +45,7 @@ public class Wallet {
 
             if (quantity > 0) {
                 /* Entrada x tipoFicha, inicilizar de no haber */
-                chips.add(new Chips(quantity, type));
+                chips.add(new Chips(type, quantity));
                 money -= quantity * valueCoin;
             }
         }
@@ -53,6 +54,8 @@ public class Wallet {
         if (money > 0) {
             System.out.println("Sobra: " + money);
         }
+
+        player.setMoney(money);
     }
 
     //Restar lo apostado

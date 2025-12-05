@@ -31,7 +31,7 @@ public class Chips {
 
     public double getTotalValue()
     {
-        return this.amount * valueOfType(this.type)
+        return this.amount * valueOfType(this.type);
     }
     /**
      * Remover la cantidad de fichas

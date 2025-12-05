@@ -1,12 +1,16 @@
-import Wallet.Wallet;
+package Entity;
+
+import Contenido.Carta;
+import Wallet.Betting;
+import Wallet.WalletModel;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Player {
     private String name;
-    private double money;
-    private Wallet wallet;
+    private double money = 10000.00;
+    private WalletModel wallet = new WalletModel();
+    private Betting betting =  new Betting();
 
     //Por defecto si se crea vacio será un bot
     private boolean isBot = true;
@@ -16,17 +20,16 @@ public class Player {
     //Constructores
 
     public Player() {//Modificado para que Bot tenga un numero ramson
-        Random random = new Random();
-        this.money = 200 + random.nextInt(301); //200 a 300
-        this.wallet = new Wallet(); //Crea un nuevo Wallet.Wallet vacio
-        this.wallet.startWallet(this.money); //Llena el wallet con chips x money
+        this.wallet.startWallet(this ); //Llena el wallet con chips x money
     }
 
-    public Player(String name, double money, boolean isBot, Wallet wallet) {
+    public Player(String name, double money, boolean isBot, WalletModel wallet) {
         this.name = name;
         this.money = money;
         this.isBot = isBot;
         this.wallet = wallet;
+
+        this.wallet.startWallet( this );
     }
 
     //Getters y Setters
@@ -43,7 +46,7 @@ public class Player {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
@@ -55,30 +58,59 @@ public class Player {
         isBot = bot;
     }
 
-    public boolean hasEnoughMoney( int bet )
-    {
-        return this.money >= bet;
-    }
     
-    public Wallet getWallet() {
+    public WalletModel getWallet() {
         return wallet;
     }
 
-    public void setWallet(Wallet wallet) {
+    public void setWallet(WalletModel wallet) {
         this.wallet = wallet;
     }
-
 
     public void giveCard( Carta card )
     {
         this.cartas.add( card );
     }
 
+    public void resetBetting()
+    {
+        this.betting = new Betting();
+    }
+
+    public Betting getBetting() {
+        return betting;
+    }
+
+    public ArrayList<Carta> getCartas() {
+        return cartas;
+    }
+
+    public int getCartasPuntosTotales()
+    {
+        int puntos = 0;
+
+        for (Carta carta: this.cartas)
+        {
+            puntos +=carta.getValue();
+        }
+
+        return puntos;
+    }
+
+
+
+    public void generateBetBot() {
+        //generar numero aletario
+        int money = (int) (Math.random() * 100) + 1;
+        this.money = money;
+        this.wallet.startWallet( this );
+    }
+
     //Metodos
 
     @Override
     public String toString() {
-        return "Player{" +
+        return "Entity.Player{" +
                 "name='" + name + '\'' +
                 ", money=" + money +
                 ", isBot=" + isBot +

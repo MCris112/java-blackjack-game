@@ -1,13 +1,14 @@
+import Contenido.Mazo;
+import Entity.Crupier;
+import Entity.Player;
 import Utilities.MC;
 import Utilities.Name;
 import Utilities.Table;
+import Wallet.WalletModel;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Random;
-import java.util.Optional;
-import Wallet.Betting;
- 
+
 public class Game {
 
     private Crupier crupier;
@@ -63,10 +64,10 @@ public class Game {
     {
         if ( this.crupier == null ) {
 
-            System.out.println("¿Quieres ser el Crupier? (Si, s para confirmar / enter o cualquiera para omitir)");
+            System.out.println("¿Quieres ser el Entity.Crupier? (Si, s para confirmar / enter o cualquiera para omitir)");
             String selected =  sc.nextLine().toUpperCase();
             if ( selected.equals("SI") || selected.equals("S") ) {
-                System.out.println( "Ingrese el nombre del Crupier");
+                System.out.println( "Ingrese el nombre del Entity.Crupier");
                 this.crupier = new Crupier( sc.nextLine() );
 
                 return;
@@ -105,39 +106,54 @@ public class Game {
         {
             this.crupier = new Crupier( Name.generate() );
         }
-        //Llamada para ejecutar betMenu     
-        int totalBet = 0; //Cantidad por defecto
- 
-        //1er jugador que no sea un bot.
-        Optional<Player> humanPlayerOpt = players.stream().filter(p -> !p.isBot()).findFirst();
- 
-        if (humanPlayerOpt.isPresent()) {
-            Player humanPlayer = humanPlayerOpt.get();
-            System.out.println("\n--- Turno de apuesta para " + humanPlayer.getName() + " ---");
-            
-            //Entrada_datos
-            System.out.print("Introduce tu dinero inicial: ");
-            double money = Double.parseDouble(sc.nextLine());
-            humanPlayer.getWallet().startWallet(money);
-            humanPlayer.getWallet().eyeWallet();
 
-            //Nueva apuesta en creacion
-            Betting betting = new Betting();
-            betting.setWallet(humanPlayer.getWallet()); 
-            betting.actionBetMenu();
-            totalBet = betting.calcTotalBet(); 
-        } else {
-            System.out.println("Bots en la mesa. Iniciando con apuesta por defecto.");
-            totalBet = new Random().nextInt(91) + 10; 
+
+        //Mostrar menu de cuanto dinero quiere apostar
+        for ( Player p : this.players )
+        {
+             // pregunta a cada jugador cuanto quiere apostar
+            if ( p.isBot() )
+            {
+                //generar automaticamente la apuesta
+                p.generateBetBot();
+            }else{
+                p.getBetting().actionBetMenu();
+            }
         }
+
+        //Llamada para ejecutar betMenu     
+//        int totalBet = 0; //Cantidad por defecto
+//
+//        //1er jugador que no sea un bot.
+//        Optional<Entity.Player> humanPlayerOpt = players.stream().filter(p -> !p.isBot()).findFirst();
+//
+//        if (humanPlayerOpt.isPresent()) {
+//            Entity.Player humanPlayer = humanPlayerOpt.get();
+//            System.out.println("\n--- Turno de apuesta para " + humanPlayer.getName() + " ---");
+//
+//            //Entrada_datos
+//            System.out.print("Introduce tu dinero inicial: ");
+//            double money = Double.parseDouble(sc.nextLine());
+//            humanPlayer.getWallet().startWallet(money);
+//            humanPlayer.getWallet().eyeWallet();
+//
+//            //Nueva apuesta en creacion
+//            Betting betting = new Betting();
+//            betting.setWallet(humanPlayer.getWallet());
+//            betting.actionBetMenu();
+//            totalBet = betting.calcTotalBet();
+//        } else {
+//            System.out.println("Bots en la mesa. Iniciando con apuesta por defecto.");
+//            totalBet = new Random().nextInt(91) + 10;
+//        }
  
         this.mazo.generate();
-        this.startRound(totalBet);
+        this.startRound();
     }
 
-    public void startRound(int bet)
+    public void startRound()
     {
-        this.checkPlayersMoney(bet);
+//        this.checkPlayersMoney();
 
         // Si no hay más jugadores la partida termina
         if (players.isEmpty())
@@ -160,32 +176,55 @@ public class Game {
             //TODO preguntar si quiere asegurar?
         }
 
-        Table table = Table.instance();
+        // Dar carta a cada jugador
+        this.mazo.giveCardToPlayers( this.players );
 
-        for (Player p : players) {
-            table.addRow( p.toString() );
+        //Quieres carta?
+        for ( Player p : this.players )
+        {
+            System.out.printf( "¿%s quires una carta? (si/no) \n", p.getName() );
+            System.out.println("Cantidad actual es: "+ p.getCartasPuntosTotales());
+
+            String option = sc.nextLine().toUpperCase();
+
+            if ( option.equals("SI") || option.equals("S")) {
+                this.mazo.giveCardTo( p );
+            }
+
+            if ( p.getCartasPuntosTotales() > 21 )
+            {
+                System.out.println("LO SENTIMOS PERDISTE LA RONDA");
+                this.players.remove( p );
+                p.resetBetting(); //reiniciamosapuesta
+            }else{
+
+                //dar cartas crupier hasta minimo 17 puntos
+                do {
+                    //ver si alguien tiene jackblack
+
+
+                }while ( this.crupier.getPuntosTotales() < 17 );
+
+            }
         }
-
-        table.print();
     }
 
     /**
      * Verifica si cada jugador tiene saldo suficiente para poder continuar
-     * @param bet La cantidad apostada en el juego
      */
-    private void checkPlayersMoney(int bet)
-    {
-        for (Player p : players) {
-            if ( !p.hasEnoughMoney(bet) )
-            {
-                if ( !p.isBot() )
-                {
-                    // TODO: Vender riñon o conea
-                    System.out.println("PIDE AL BANCO");
-                }
-                this.players.remove( p );
-            }
-        }
-    }
+//    private void checkPlayersMoney()
+//    {
+//        for (Player p : players) {
+//            if ( !p.hasEnoughMoney() )
+//            {
+//                if ( !p.isBot() )
+//                {
+//                    // TODO: Vender riñon o conea
+//                    System.out.println("PIDE AL BANCO");
+//                }
+//                this.players.remove( p );
+//            }
+//        }
+//    }
 
 }

@@ -1,3 +1,7 @@
+package Contenido;
+
+import Entity.Crupier;
+
 public class Carta {
 
     private Crupier.Figure symbol;
@@ -76,7 +80,7 @@ public class Carta {
 
     @Override
     public String toString() {
-        return "Carta{" +
+        return "Contenido.Carta{" +
                 "symbol=" + symbol +
                 ", value=" + value +
                 ", rank=" + rank +

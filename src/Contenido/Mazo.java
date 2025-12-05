@@ -1,3 +1,7 @@
+package Contenido;
+
+import Entity.Crupier;
+import Entity.Player;
 import Utilities.Table;
 
 import java.util.ArrayList;
@@ -97,6 +101,28 @@ public class Mazo {
         }
 
         table.print();
+    }
+
+    public void giveCardTo( Player player )
+    {
+        Carta card = getRandCard();
+
+        if (card != null) {
+            System.out.printf("%s recibiste una carta: %s", player.getName(), card.toString());
+            player.giveCard( card );
+        }
+
+    }
+
+    public void giveCardTo( Crupier crupier )
+    {
+        Carta card = getRandCard();
+
+        if (card != null) {
+            System.out.printf("CRUPIER: %s recibiste una carta: %s", crupier.getName(), card.toString());
+            crupier.giveCard( card );
+        }
+
     }
 
 }

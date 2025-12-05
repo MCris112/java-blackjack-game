@@ -10,7 +10,7 @@ public class Betting {
 
     //Atributos
     private ArrayList<Chips> betChips; 
-    //private Wallet wallet;
+    //private Wallet.Wallet wallet;
     private Scanner sc;
     private ChipTransp chipTransp;
 
@@ -19,7 +19,7 @@ public class Betting {
     public Betting() {
         this.betChips = new ArrayList<>(); //Incializado
         this.chipTransp = new ChipTransp(betChips);
-        //this.wallet = new Wallet();
+        //this.wallet = new Wallet.Wallet();
         this.sc = new Scanner(System.in);
     }
 
@@ -33,13 +33,13 @@ public class Betting {
         this.betChips = betChips;
     }
 
-    public Wallet getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
+//    public WalletModel getWallet() {
+//        return wallet;
+//    }
+//
+//    public void setWallet(WalletModel wallet) {
+//        this.wallet = wallet;
+//    }
 
     //Metodos
 
@@ -112,24 +112,15 @@ public class Betting {
                     break;
 
                 case "ok":
-                    end = true;
+                    if ( this.calcTotalBet() == 0 )
+                    {
+                        System.out.println("Necesitas dinero para apostar");
+                    }else{
+                        end = true;
+                    }
                     break;
 
-                default:
-                    /* Conversion reutilizada */
-                    TypeChips tipo = wallet.parseType(option);
-                    /* Validacion Reciclada */
-                    if (!Wallet.realColor(tipo)) { //Recordar Static
-                        continue;
-                    }
-
-                    //Zona_Transferencia
-                    if (wallet.minusChip(option, 1)) {
-                        chipTransp.plusChip(tipo, 1);
-
-                        /* Impresion_Cromprobacion */
-                        System.out.println("Has puesto una ficha de " + option + " en la mesa. Apuesta total: " + calcTotalBet());
-                    }
+                default: break;
             }
 
         } while (!end);

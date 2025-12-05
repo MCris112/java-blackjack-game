@@ -1,3 +1,5 @@
+package Contenido;
+
 import Utilities.Table;
 
 import java.util.Scanner;
@@ -15,7 +17,7 @@ import java.util.Scanner;
         int opcion = sc.nextInt();
         Table.instance()
                 .addRow("Opciones:")
-                .addRow("1: Solicitar Carta")
+                .addRow("1: Solicitar Contenido.Carta")
                 .addRow("2: Mantener y seguir")
                 .addRow("3: Retirarse con lo ganado");
 

@@ -1,3 +1,8 @@
+package Entity;
+
+import Contenido.CardRank;
+import Contenido.Carta;
+
 import java.util.ArrayList;
 
 public class Crupier {
@@ -35,6 +40,22 @@ public class Crupier {
             return true;
 
         return false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPuntosTotales()
+    {
+        int puntos = 0;
+
+        for (Carta carta: this.cartas)
+        {
+            puntos +=carta.getValue();
+        }
+
+        return puntos;
     }
 
     public enum Figure {
