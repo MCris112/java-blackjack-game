@@ -71,31 +71,31 @@ public class WalletModel {
     //Aplicacion de Semilla y la Utilidad que la brinda
 
     //Dado que la utilidad les ayuda, solo validadcalidad el color
-    public void plusChip(String color, int amount) {
-        TypeChips tipo = parseType(color);
-        if (!realColor(tipo)){return;}
-            chipTransp.plusChip(tipo, amount);
-        }
+//    public void plusChip(String color, int amount) {
+//        TypeChips tipo = parseType(color);
+//        if (!realColor(tipo)){return;}
+//            chipTransp.plusChip(tipo, amount);
+//        }
 
     //Aqui, se agrega la imposibilidad de -0
-    public boolean minusChip(String color, int amount) {
-        TypeChips tipo = parseType(color);
-        if (!realColor(tipo)){return false;}
-
-        if (amount <= 0) {
-        System.out.println("La cantidad debe ser mayor que cero.");
-        return false;
-        }
-
-        int disponibles = chipTransp.getPlayMount(tipo);
-        if (disponibles < amount) {
-            System.out.println("No tienes suficientes fichas de " + tipo);
-            return false; 
-        }
-            
-        chipTransp.minusChip(tipo, amount);
-        return true;
-    }
+//    public boolean minusChip(String color, int amount) {
+//        TypeChips tipo = parseType(color);
+//        if (!realColor(tipo)){return false;}
+//
+//        if (amount <= 0) {
+//        System.out.println("La cantidad debe ser mayor que cero.");
+//        return false;
+//        }
+//
+//        int disponibles = chipTransp.getPlayMount(tipo);
+//        if (disponibles < amount) {
+//            System.out.println("No tienes suficientes fichas de " + tipo);
+//            return false;
+//        }
+//
+//        chipTransp.minusChip(tipo, amount);
+//        return true;
+//    }
 
 
     // /* ContadorFichas-Existentes */

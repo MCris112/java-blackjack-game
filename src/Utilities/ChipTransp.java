@@ -26,7 +26,7 @@ public class ChipTransp {
             }
         }
         if (!found) {
-            chips.add(new Chips(playMount, tp));
+//            chips.add(new Chips(playMount, tp));
         }
     }
 
