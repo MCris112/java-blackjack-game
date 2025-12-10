@@ -1,6 +1,7 @@
 package Entity;
 
 import Contenido.Carta;
+import Contenido.Mazo;
 import Wallet.Betting;
 import Wallet.WalletModel;
 
@@ -69,6 +70,8 @@ public class Player {
 
     public void giveCard( Carta card )
     {
+        System.out.printf("%s recibiste una carta: \n", this.name);
+        System.out.println(card);
         this.cartas.add( card );
     }
 
@@ -107,6 +110,24 @@ public class Player {
     }
 
     //Metodos
+
+    /**
+     * Verificar si el jugador tiene Blackjack
+     * @return en caso de que tenga verdadero
+     */
+    public boolean hasBlackjack()
+    {
+        return Mazo.checkBlackjack( this.cartas );
+    }
+
+    public void prestarMoney() {
+        if (this.isBot()) {
+            System.out.println("El crupier no puede prestar dinero a un bot.");
+        }
+        else {
+            System.out.println("El crupier humano ha prestado dinero.");
+        }
+    }
 
     @Override
     public String toString() {

@@ -11,6 +11,8 @@ public class Chips {
         this.type = type;
     }
 
+    //Getter and Setters
+
     public TypeChips getType() {
         return type;
     }
@@ -29,6 +31,15 @@ public class Chips {
 
     //Metodos
 
+    /**
+     * Añade cuantos chips quires agregar dentro de esta lista de chips
+     * @param cantidad Si tienes 2 y pones cantidad 2, tendrás 4 chips
+     */
+
+    public void add(int cantidad)
+    {
+        this.amount += cantidad;
+    }
     public double getTotalValue()
     {
         return this.amount * valueOfType(this.type);
@@ -44,10 +55,12 @@ public class Chips {
 
         System.out.println("Has quitado " + cantRemove + " fichas de " + this.type);
 
-        if ( amount < 0)
+        //Simpleficable
+        if ( amount < 0) {
             return true;
-
-        return false;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -57,9 +70,9 @@ public class Chips {
      * @return
      */
     public static double valueOfType(TypeChips t) {
-        switch (t) {
+        switch (t) { //Rememplazable
             case BLANCO: return 1;
-            // case Rosa: return 2.5; Suprimido para evitar complicaciones NaranjaMoradoBlancoAzulRojoVerdeNegro
+            // case Rosa: return 2.5; Suprimido para evitar complicaciones
             case ROJO: return 5;
             case AZUL: return 10;
             case VERDE: return 25;

@@ -1,7 +1,6 @@
 package Wallet;
 
 import Entity.Player;
-import Utilities.ChipTransp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,11 +8,9 @@ public class WalletModel {
     
     //Atributos
     private ArrayList<Chips> chips = new ArrayList<>();
-    private ChipTransp chipTransp;
 
     //ConstructorS
     public WalletModel(){
-        this.chipTransp = new ChipTransp(this.chips);
     }
 
 
@@ -44,7 +41,7 @@ public class WalletModel {
             int quantity = (int)(money / valueCoin);
 
             if (quantity > 0) {
-                /* Entrada x tipoFicha, inicilizar de no haber */
+                /* Entrada x tipoFicha, inicializar de no haber */
                 chips.add(new Chips(type, quantity));
                 money -= quantity * valueCoin;
             }

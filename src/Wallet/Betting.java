@@ -3,24 +3,20 @@ package Wallet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import Utilities.ChipTransp;
+import Utilities.MC;
 import Utilities.Table;
 
 public class Betting {
 
     //Atributos
-    private ArrayList<Chips> betChips; 
-    //private Wallet.Wallet wallet;
-    private Scanner sc;
-    private ChipTransp chipTransp;
+    private ArrayList<Chips> betChips;
+    //private WalletModel wallet;
 
+    static Scanner sc = new Scanner(System.in);
 
     //Constructor
     public Betting() {
         this.betChips = new ArrayList<>(); //Incializado
-        this.chipTransp = new ChipTransp(betChips);
-        //this.wallet = new Wallet.Wallet();
-        this.sc = new Scanner(System.in);
     }
 
     //Get and Setters
@@ -47,7 +43,6 @@ public class Betting {
     // FUNCIONES DE MENU DE APUESTAS
     //-----------------------------------
 
-
     //ActionBetMenu
     /* Acciona el menu de apuestas y derivados */
     public void actionBetMenu() {
@@ -56,27 +51,22 @@ public class Betting {
         boolean end = false;
 
         do {
-
             Table.instance()
                     .addRow("Escribe el color de la ficha, 'quitar' para retirar, 'ok' para mantener")
                     .addRow("Color", "Precio")
-                    .addRow("Blanco: 1")
-                    .addRow("Rojo: 5")
-                    .addRow("Azul: 10")
-                    .addRow("Verde: 25")
-                    .addRow("Negro: 100")
-                    .addRow("Morado: 500")
-                    .addRow("Naranja: 1000")
+                    .addRow("Blanco", "1")
+                    .addRow("Rojo", "5")
+                    .addRow("Azul", "10")
+                    .addRow("Verde", "25")
+                    .addRow("Negro",  "100")
+                    .addRow("Morado", "500")
+                    .addRow("Naranja", "1000")
                     .print();
 
             System.out.println("Seleccione una opcion: ");
             option = sc.nextLine().trim();
 
             switch (option.toLowerCase()) {
-//                case "retirarse":
-//                    System.out.println("Te has retirado.");
-//                    return;
-
                 case "quitar":
                     System.out.print("Color a retirar: ");
                     String colorRemove = sc.nextLine().trim();
@@ -98,15 +88,22 @@ public class Betting {
                         continue;
                     }
 
+                    // Obtenemos el chip que queremos quitar
+                    Chips chips = this.getChipPorTipo(tipoRemove);
 
-                    for (int i = 0; i < this.betChips.size(); i++) {
-                        if ( this.betChips.get(i).getType() == tipoRemove ){
-                            if ( this.betChips.get(i).remove( cantRemove ) )
-                                this.betChips.remove(i);
-                        }
+                    // Quitamos la cantidad de chips por ese tipo para remover
+                    chips.remove(cantRemove);
+
+                    // Si hay menos chips o igual a 0, se supone que ya no hay chips de este tipo
+                    // Entonces quitamos de la lista de los chips apostados
+                    if ( chips.getAmount() <= 0)
+                    {
+                        this.betChips.remove( chips );
                     }
 
-                    System.out.println("Tienes " + this.calcTotalBet());
+                    MC.printLine();
+                    System.out.println("Total dinero apostado: " + this.calcTotalBet());
+                    MC.printLine();
                     this.eyeBet();
 
                     break;
@@ -114,17 +111,54 @@ public class Betting {
                 case "ok":
                     if ( this.calcTotalBet() == 0 )
                     {
-                        System.out.println("Necesitas dinero para apostar");
+                        MC.title.outlineY("Necesitas dinero para apostar");
                     }else{
                         end = true;
                     }
                     break;
 
-                default: break;
+                default:
+                    // Verifica que el color sea válido
+                    if( Chips.parseType(option) == null )
+                    {
+                        MC.title.outlineY("El color seleccionado no es valido");
+                    }else{
+                        this.agregarChipPorTipo( Chips.parseType(option) );
+                    }
+
+                    this.eyeBet();
+
+                    break;
             }
 
         } while (!end);
         System.out.println("Es tu apuesta final: " + totalBet);
+    }
+
+    public void agregarChipPorTipo( TypeChips tipo )
+    {
+        // Obetenemos la lista de chips por el tipo
+        Chips chips = this.getChipPorTipo(tipo);
+
+        //Añadimos cuantos chips se quiere agregar al chip existente en la lista
+        chips.add(1);
+
+        MC.title.outlineY("Añadiste el chip ");
+    }
+
+    public Chips getChipPorTipo( TypeChips tipo )
+    {
+        for (Chips chip : this.betChips) {
+            if (chip.getType().equals(tipo)) {
+                return chip;
+            }
+        }
+
+        // Si no se encuentra un chip existente, entonces añadimos uno a la lista
+        Chips chips = new Chips( tipo, 0 );
+        this.betChips.add(chips);
+
+        return chips;
     }
 
     /* Imprime Fichas Apostadas */

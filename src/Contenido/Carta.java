@@ -2,15 +2,16 @@ package Contenido;
 
 import Entity.Crupier;
 
+
 public class Carta {
 
-    private Crupier.Figure symbol;
+    private Figure symbol;
 
     private int value;
 
     private CardRank rank;
 
-    public Carta(Crupier.Figure symbol, int value, CardRank rank) {
+    public Carta(Figure symbol, int value, CardRank rank) {
         this.symbol = symbol;
         this.value = value;
         this.rank = rank;
@@ -22,7 +23,7 @@ public class Carta {
         }
     }
 
-    public Crupier.Figure getSymbol() {
+    public Figure getSymbol() {
         return symbol;
     }
 
@@ -80,10 +81,84 @@ public class Carta {
 
     @Override
     public String toString() {
-        return "Contenido.Carta{" +
-                "symbol=" + symbol +
-                ", value=" + value +
-                ", rank=" + rank +
-                '}';
+        String simbolo = switch ( this.symbol ) {
+            case Figure.PICAS -> "♠";
+            case Figure.CORAZONES -> "♥";
+            case Figure.DIAMANTES -> "♦";
+            case Figure.TREBOLES -> "♣";
+        };
+
+        return """
+           ┌─────────┐
+           │ %-2d      │
+           │         │
+           │    %s    │
+           │         │
+           │      %-2d │
+           └─────────┘
+           """.formatted( parseRankIntoValue(this.rank) , simbolo, parseRankIntoValue(this.rank));
+    }
+
+
+    public static int parseRankIntoValue( CardRank cardRank )
+    {
+        switch( cardRank )
+        {
+            case CardRank.AS -> {
+                return 1;
+            }
+
+            case CardRank.TWO ->  {
+                return 2;
+            }
+
+            case CardRank.THREE ->  {
+                return 3;
+            }
+
+            case CardRank.FOUR ->  {
+                return 4;
+            }
+
+            case CardRank.FIVE ->  {
+                return 5;
+            }
+
+            case CardRank.SIX ->  {
+                return 6;
+            }
+
+            case CardRank.SEVEN ->  {
+                return 7;
+            }
+
+            case CardRank.EIGHT ->  {
+                return 8;
+            }
+
+            case CardRank.NINE ->  {
+                return 9;
+            }
+
+            case CardRank.TEN ->  {
+                return 10;
+            }
+
+            case CardRank.JACK ->  {
+                return 11;
+            }
+
+            case CardRank.QUEEN -> {
+                return 12;
+            }
+
+            case CardRank.KING -> {
+                return 13;
+            }
+
+            default -> {
+                return 0;
+            }
+        }
     }
 }

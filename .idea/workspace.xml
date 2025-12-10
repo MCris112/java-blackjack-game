@@ -5,33 +5,93 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec71a57-8334-410e-8413-edc8a75380cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Contenido/Figure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Contenido/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Contenido/Carta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Contenido/Mazo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Contenido/Mazo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Crupier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Crupier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wallet/Betting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Betting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wallet/Chips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Chips.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Wallet/WalletModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/WalletModel.java" afterDir="false" />
     </list>
-    <list id="7f31e1b6-d34e-496d-8582-dcb71de3a891" name="Changes by Marggio" comment="" />
+    <list id="7f31e1b6-d34e-496d-8582-dcb71de3a891" name="Changes by Marggio" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Utilities/ChipTransp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wallet/Betting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Betting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wallet/Chips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Chips.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wallet/TypeChips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/TypeChips.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wallet/WalletModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/WalletModel.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MCris112"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MCris112&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MCris112/java-blackjack-game.git",
-    "accountId": "1ac1896f-a97d-43b0-9120-d181fe6797bb"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MCris112/java-blackjack-game.git&quot;,
+    &quot;accountId&quot;: &quot;1ac1896f-a97d-43b0-9120-d181fe6797bb&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+}</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Wallet/WalletModel.java">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="3" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="11" end1="12" start2="10" end2="10" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="15" end1="16" start2="13" end2="13" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="46" end1="47" start2="43" end2="44" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Wallet/Chips.java">
+      <ranges>
+        <range start1="13" end1="13" start2="13" end2="15" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+        <range start1="31" end1="31" start2="33" end2="42" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="46" end1="47" start2="57" end2="59" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+        <range start1="48" end1="50" start2="60" end2="63" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+        <range start1="59" end1="60" start2="72" end2="73" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+        <range start1="61" end1="62" start2="74" end2="75" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Wallet/Betting.java">
+      <ranges>
+        <range start1="5" end1="6" start2="5" end2="6" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="11" end1="15" start2="11" end2="13" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="16" end1="16" start2="14" end2="15" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="20" end1="23" start2="19" end2="19" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="49" end1="50" start2="45" end2="45" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+        <range start1="58" end1="59" start2="53" end2="53" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="62" end1="69" start2="56" end2="63" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="75" end1="79" start2="69" end2="69" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="100" end1="100" start2="90" end2="92" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="101" end1="106" start2="93" end2="101" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="108" end1="109" start2="103" end2="106" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="116" end1="117" start2="113" end2="114" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="122" end1="123" start2="119" end2="131" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="128" end1="128" start2="136" end2="162" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+      </ranges>
+    </file>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="36QW27ok28llmKd7XlE6QSvT2mR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,7 +99,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
+    "Application.Main.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -56,6 +116,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="JavaBlackJackGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -71,7 +145,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1764939066189</updated>
-      <workItem from="1764939068152" duration="2273000" />
+      <workItem from="1764939068152" duration="2305000" />
+      <workItem from="1765101541698" duration="80000" />
+      <workItem from="1765106761340" duration="1239000" />
+      <workItem from="1765366829174" duration="6410000" />
     </task>
     <servers />
   </component>

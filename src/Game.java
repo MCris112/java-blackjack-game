@@ -1,3 +1,5 @@
+import Contenido.CardRank;
+import Contenido.Carta;
 import Contenido.Mazo;
 import Entity.Crupier;
 import Entity.Player;
@@ -7,6 +9,7 @@ import Utilities.Table;
 import Wallet.WalletModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -179,9 +182,15 @@ public class Game {
         // Dar carta a cada jugador
         this.mazo.giveCardToPlayers( this.players );
 
-        //Quieres carta?
-        for ( Player p : this.players )
+        ArrayList<Player> jugadoresContinuan = new ArrayList<>(players);
+
+        // Quieres carta?
+        for ( int i = 0; i < jugadoresContinuan.size(); i++ )
         {
+            Player p = jugadoresContinuan.get( i );
+            if ( p == null )
+                continue;
+
             System.out.printf( "¿%s quires una carta? (si/no) \n", p.getName() );
             System.out.println("Cantidad actual es: "+ p.getCartasPuntosTotales());
 
@@ -194,19 +203,68 @@ public class Game {
             if ( p.getCartasPuntosTotales() > 21 )
             {
                 System.out.println("LO SENTIMOS PERDISTE LA RONDA");
-                this.players.remove( p );
                 p.resetBetting(); //reiniciamosapuesta
             }else{
 
                 //dar cartas crupier hasta minimo 17 puntos
                 do {
-                    //ver si alguien tiene jackblack
-
-
+                    this.mazo.giveCardToCrupier( this.crupier );
                 }while ( this.crupier.getPuntosTotales() < 17 );
 
+                //Condicionales del juego
+
+                // TODO Verificar crupier tiene blackjack
+
+                if ( crupier.hasBlackjack() )
+                {
+                    // Algun jugador tiene blackjack?
+                    for (Player player: this.players )
+                    {
+                        if( player.hasBlackjack() )
+                        {
+                            // TODO recupera el dinero apostado
+                        }else{
+
+                        }
+                    }
+
+                }
+
+                // TODO algun jugador tiene blackjack
+
+                if ( this.crupier.getPuntosTotales() < 17 ){
+                    System.out.println("Crupier mayor que 17");
+                }
+                else{
+                    System.out.println("Crupier mayor que 17");
+                }
+
+
+            }
+
+            // Comprobamos que no es para poder mostrar en consola
+            if ( !p.isBot() )
+            {
+                System.out.println("¿Quieres continuar juggando? (si/ enter omitir) ");
+                String option2 = sc.nextLine().toUpperCase();
+                if ( !option2.equals("SI") ) {
+                    this.players.remove(i);
+                    MC.title.outline("MUCHAS GRACIAS "+p.getName()+" POR JUGAR");
+                }
             }
         }
+
+        this.init();
+    }
+
+    private void giveCardToCrupier()
+    {
+        this.mazo.giveCardToCrupier( this.crupier );
+        if ( this.crupier.getPuntosTotales() < 17 )
+        {
+
+        }
+
     }
 
     /**
@@ -226,5 +284,7 @@ public class Game {
 //            }
 //        }
 //    }
+
+
 
 }

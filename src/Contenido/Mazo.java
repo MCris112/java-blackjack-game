@@ -19,13 +19,13 @@ public class Mazo {
         //Al generar tenemos que limpiar las cartas que ya existen para generar desde 0
         this.cartas.clear();
 
-        generateBySymbol( this.cartas, Crupier.Figure.CORAZONES );
-        generateBySymbol( this.cartas, Crupier.Figure.PICAS );
-        generateBySymbol( this.cartas, Crupier.Figure.TREBOLES );
-        generateBySymbol( this.cartas, Crupier.Figure.DIAMANTES );
+        generateBySymbol( this.cartas, Figure.CORAZONES );
+        generateBySymbol( this.cartas, Figure.PICAS );
+        generateBySymbol( this.cartas, Figure.TREBOLES );
+        generateBySymbol( this.cartas, Figure.DIAMANTES );
     }
 
-    public static void generateBySymbol( ArrayList<Carta> cartas, Crupier.Figure symbol )
+    public static void generateBySymbol( ArrayList<Carta> cartas, Figure symbol )
     {
         for (int i = 1; i < 14; i++) {
             cartas.add( new Carta(symbol, i, Carta.getRank(i)) );
@@ -108,7 +108,7 @@ public class Mazo {
         Carta card = getRandCard();
 
         if (card != null) {
-            System.out.printf("%s recibiste una carta: %s", player.getName(), card.toString());
+
             player.giveCard( card );
         }
 
@@ -123,6 +123,40 @@ public class Mazo {
             crupier.giveCard( card );
         }
 
+    }
+
+    public static boolean checkBlackjack( ArrayList<Carta> cartas )
+    {
+        // Solo se necesita 2 cartas para Blackjack
+        if ( cartas.size() > 2)
+        {
+            return false;
+        }
+
+        Carta aux =  null;
+
+        if ( cartas.get(0).getRank() == CardRank.AS )
+        {
+            aux = cartas.get(1);
+        }else if ( cartas.get(1).getRank() == CardRank.AS )
+        {
+            aux = cartas.getFirst();
+        }else {
+            // / La primera o la segunda carta tiene que ser una as
+            return false;
+        }
+
+        switch ( aux.getRank() )
+        {
+            case CardRank.JACK, CardRank.QUEEN, CardRank.KING -> {
+                return true;
+            }
+
+            default -> {
+                // Si no comprueba que es alguna de estas opciones, tampoco es blackjack
+                return false;
+            }
+        }
     }
 
 }

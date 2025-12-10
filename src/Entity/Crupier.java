@@ -2,6 +2,7 @@ package Entity;
 
 import Contenido.CardRank;
 import Contenido.Carta;
+import Contenido.Mazo;
 
 import java.util.ArrayList;
 
@@ -58,10 +59,13 @@ public class Crupier {
         return puntos;
     }
 
-    public enum Figure {
-        PICAS,
-        CORAZONES,
-        DIAMANTES,
-        TREBOLES
+
+    /**
+     * Verificar si el crupier tiene Blackjack
+     * @return en caso de que tenga verdadero
+     */
+    public boolean hasBlackjack()
+    {
+        return Mazo.checkBlackjack( this.cartas );
     }
 }

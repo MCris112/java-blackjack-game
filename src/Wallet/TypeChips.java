@@ -18,13 +18,3 @@ public enum TypeChips {
 // Negro(100),
 // Morado(500),
 // Naranja(1000);
-
-// private final int value;
-
-// MoneyType(int value) {
-//     this.value = value;
-// }
-
-// public int getValue() {
-//     return value;
-// }
