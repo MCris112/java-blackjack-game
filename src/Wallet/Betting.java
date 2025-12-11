@@ -7,7 +7,6 @@ import java.util.Scanner;
 import Entity.Player;
 import Utilities.MC;
 import Utilities.Table;
-import Entity.Player;
 
 public class Betting {
 
@@ -19,7 +18,7 @@ public class Betting {
 
     //Constructor
     public Betting() {
-        this.betChips = new ArrayList<>(); //Incializado 
+        this.betChips = new ArrayList<>(); //Incializado
     }
 
     //Get and Setters
@@ -48,7 +47,6 @@ public class Betting {
 
     //ActionBetMenu
     /* Acciona el menu de apuestas y derivados */
-    public void actionBetMenu(Player player) {
     public void actionBetMenu(Player player) {
         String option;
         int totalBet = 0;
@@ -201,9 +199,9 @@ public class Betting {
     /* Calcular valor_TotalBet */
     public double calcTotalBet(){
         double total = 0;
-            for (Chips c : betChips) {
-                total += c.getTotalValue();
-            }
+        for (Chips c : betChips) {
+            total += c.getTotalValue();
+        }
         return total;
     }
 
