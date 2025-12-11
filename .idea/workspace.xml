@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec71a57-8334-410e-8413-edc8a75380cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/github.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wallet/Betting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Betting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +97,7 @@
       <workItem from="1765106761340" duration="1239000" />
       <workItem from="1765366829174" duration="6445000" />
       <workItem from="1765437066889" duration="2655000" />
-      <workItem from="1765467648592" duration="388000" />
+      <workItem from="1765467648592" duration="2624000" />
     </task>
     <servers />
   </component>
