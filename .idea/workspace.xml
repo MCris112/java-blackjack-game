@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec71a57-8334-410e-8413-edc8a75380cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Contenido/Figure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Contenido/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Contenido/Carta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Contenido/Mazo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Contenido/Mazo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Crupier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Crupier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Wallet/Betting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Betting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wallet/Chips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Chips.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wallet/WalletModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/WalletModel.java" afterDir="false" />
     </list>
     <list id="7f31e1b6-d34e-496d-8582-dcb71de3a891" name="Changes by Marggio" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Utilities/ChipTransp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wallet/Betting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Betting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wallet/Chips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/Chips.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wallet/TypeChips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/TypeChips.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wallet/WalletModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wallet/WalletModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,40 +41,18 @@
   }
 }</component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Wallet/WalletModel.java">
+    <file path="$PROJECT_DIR$/src/Game.java">
       <ranges>
-        <range start1="3" end1="4" start2="3" end2="3" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="11" end1="12" start2="10" end2="10" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="15" end1="16" start2="13" end2="13" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="46" end1="47" start2="43" end2="44" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Wallet/Chips.java">
-      <ranges>
-        <range start1="13" end1="13" start2="13" end2="15" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
-        <range start1="31" end1="31" start2="33" end2="42" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="46" end1="47" start2="57" end2="59" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
-        <range start1="48" end1="50" start2="60" end2="63" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
-        <range start1="59" end1="60" start2="72" end2="73" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
-        <range start1="61" end1="62" start2="74" end2="75" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Wallet/Betting.java">
-      <ranges>
-        <range start1="5" end1="6" start2="5" end2="6" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="11" end1="15" start2="11" end2="13" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="16" end1="16" start2="14" end2="15" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="20" end1="23" start2="19" end2="19" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="49" end1="50" start2="45" end2="45" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
-        <range start1="58" end1="59" start2="53" end2="53" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="62" end1="69" start2="56" end2="63" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="75" end1="79" start2="69" end2="69" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="100" end1="100" start2="90" end2="92" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="101" end1="106" start2="93" end2="101" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="108" end1="109" start2="103" end2="106" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="116" end1="117" start2="113" end2="114" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="122" end1="123" start2="119" end2="131" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
-        <range start1="128" end1="128" start2="136" end2="162" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="9" end1="10" start2="9" end2="9" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+        <range start1="33" end1="33" start2="32" end2="34" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="122" end1="123" start2="123" end2="124" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="179" end1="179" start2="180" end2="181" changelist="7f31e1b6-d34e-496d-8582-dcb71de3a891" />
+        <range start1="214" end1="216" start2="216" end2="216" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="219" end1="219" start2="219" end2="221" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="224" end1="225" start2="226" end2="228" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="226" end1="227" start2="229" end2="231" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="230" end1="230" start2="234" end2="276" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
+        <range start1="231" end1="242" start2="277" end2="277" changelist="9ec71a57-8334-410e-8413-edc8a75380cc" />
       </ranges>
     </file>
   </component>
@@ -99,7 +67,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -148,7 +116,8 @@
       <workItem from="1764939068152" duration="2305000" />
       <workItem from="1765101541698" duration="80000" />
       <workItem from="1765106761340" duration="1239000" />
-      <workItem from="1765366829174" duration="6410000" />
+      <workItem from="1765366829174" duration="6445000" />
+      <workItem from="1765437066889" duration="1578000" />
     </task>
     <servers />
   </component>

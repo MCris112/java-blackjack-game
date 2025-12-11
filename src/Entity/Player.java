@@ -129,6 +129,28 @@ public class Player {
         }
     }
 
+    /**
+     * Obtener todo el dinero apostado
+     */
+    public void obtenerDineroApostado()
+    {
+        System.out.printf("%s ha ganado: %f \n", this.name, this.betting.calcTotalBet() );
+        this.money += this.betting.calcTotalBet();
+
+        this.betting.clean();
+    }
+
+    /**
+     * Obtener todo el dinero apostado
+     */
+    public void obtenerDineroApostado( double cantidad)
+    {
+        System.out.printf("%s ha ganado: %f \n", this.name, cantidad);
+        this.money += cantidad;
+
+        this.betting.clean();
+    }
+
     @Override
     public String toString() {
         return "Entity.Player{" +
