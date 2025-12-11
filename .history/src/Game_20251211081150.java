@@ -5,6 +5,7 @@ import Utilities.MC;
 import Utilities.Name;
 import Utilities.Table;
 import Wallet.WalletModel;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,8 +27,6 @@ public class Game {
                 .addRow("2", "Varios jugadores")
                 .addRow("0", "Salir")
                 .print();
-
-        System.out.println("Seleccione una opción:");
 
         switch ( Integer.parseInt(sc.nextLine()) ) {
             case 0:
@@ -118,7 +117,7 @@ public class Game {
                 //generar automaticamente la apuesta
                 p.generateBetBot();
             }else{
-                p.getBetting().actionBetMenu( p );
+                p.getBetting().actionBetMenu();
             }
         }
 
@@ -174,7 +173,9 @@ public class Game {
         // Primera carta es AS?
         if ( this.crupier.isFirstAs() )
         {
-            //TODO preguntar si quiere asegurar?
+            //TODO preguntar si quiere asegurar? 
+            //Asegurar consiste en apostar lo mismo que la apuesta inicial
+
         }
 
         // Dar carta a cada jugador
@@ -211,66 +212,33 @@ public class Game {
 
                 //Condicionales del juego
 
+                // TODO Verificar crupier tiene blackjack
+
                 if ( crupier.hasBlackjack() )
                 {
-                    MC.title.outline( "El Crupier  "+crupier.getName() + " TIENE BLACKJACK");
-
                     // Algun jugador tiene blackjack?
                     for (Player player: this.players )
                     {
                         if( player.hasBlackjack() )
                         {
-                            MC.title.outline( "FELICIDADES "+player.getName() + " TIENES BLACKJACK");
-                            player.obtenerDineroApostado();
+                            // TODO recupera el dinero apostado
                         }else{
-                            // Pierde la partida
-                            player.getBetting().clean();
+
                         }
                     }
 
-                }else{
-                    if ( this.crupier.getPuntosTotales() < 17 ){
-                        for (Player player: this.players )
-                        {
-                            // jugador n puntos mayor que crupier?
-                            if ( player.getBetting().calcTotalBet() > crupier.getPuntosTotales() )
-                            {
-
-                                if ( player.hasBlackjack() )
-                                {
-                                    //paga 3:2 == 1 1/2
-                                    double ganancia = player.getBetting().calcTotalBet() + (player.getBetting().calcTotalBet()/2);
-
-                                    player.obtenerDineroApostado( ganancia );
-                                }else{
-
-                                    if( player.getBetting().calcTotalBet() == crupier.getPuntosTotales() )
-                                    {
-                                        MC.title.outlineY("¡EMPATE!");
-                                        System.out.println();
-                                        System.out.println();
-                                    }else{
-                                        // Crupier paga x2
-                                        player.obtenerDineroApostado( player.getBetting().calcTotalBet() * 2 );
-                                    }
-                                }
-                            }else{
-                                // Crupier cobra
-                                player.obtenerDineroApostado();
-                            }
-                        }
-
-                    }
-                    else{
-                        System.out.println("Crupier mayor que 17---------");
-
-                        MC.title.outlineY("Todos los jugadores recibieron pago");
-                        for (Player player: this.players )
-                        {
-                            player.obtenerDineroApostado();
-                        }
-                    }
                 }
+
+                // TODO algun jugador tiene blackjack
+
+                if ( this.crupier.getPuntosTotales() < 17 ){
+                    System.out.println("Crupier mayor que 17");
+                }
+                else{
+                    System.out.println("Crupier mayor que 17");
+                }
+
+
             }
 
             // Comprobamos que no es para poder mostrar en consola
