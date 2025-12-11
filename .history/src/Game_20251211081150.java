@@ -117,7 +117,7 @@ public class Game {
                 //generar automaticamente la apuesta
                 p.generateBetBot();
             }else{
-                p.getBetting().actionBetMenu(p);
+                p.getBetting().actionBetMenu();
             }
         }
 
@@ -174,7 +174,7 @@ public class Game {
         if ( this.crupier.isFirstAs() )
         {
             //TODO preguntar si quiere asegurar? 
-            // this.Betting.asegurar();
+            //Asegurar consiste en apostar lo mismo que la apuesta inicial
 
         }
 

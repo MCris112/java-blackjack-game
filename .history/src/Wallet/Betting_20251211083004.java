@@ -17,7 +17,8 @@ public class Betting {
 
     //Constructor
     public Betting() {
-        this.betChips = new ArrayList<>(); //Incializado 
+        this.betChips = new ArrayList<>(); //Incializado
+        
     }
 
     //Get and Setters

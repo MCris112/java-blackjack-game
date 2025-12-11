@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 import Utilities.MC;
 import Utilities.Table;
-import Entity.Player;
 
 public class Betting {
 
@@ -17,7 +16,7 @@ public class Betting {
 
     //Constructor
     public Betting() {
-        this.betChips = new ArrayList<>(); //Incializado 
+        this.betChips = new ArrayList<>(); //Incializado
     }
 
     //Get and Setters
@@ -46,7 +45,7 @@ public class Betting {
 
     //ActionBetMenu
     /* Acciona el menu de apuestas y derivados */
-    public void actionBetMenu(Player player) {
+    public void actionBetMenu() {
         String option;
         int totalBet = 0;
         boolean end = false;
@@ -80,8 +79,7 @@ public class Betting {
 
                     /* Validacion Reciclada */
                     if (tipoRemove == null) {
-                        //Mensaje, Player.name a
-                        System.out.println("Jugador " + player.getName() + ", has insertado una ficha no válida.");
+                        System.out.println("Has incertado una ficha no vàlida");
                         continue; 
                     }
 
@@ -138,24 +136,20 @@ public class Betting {
         int betEnd = totalBet;
     }
 
-
-    //-----------------------------------
-    // Las funciones de Apuesta
-    //-----------------------------------
-
-
-    // public boolean asegurarBet(WalletModel wallet) {
-
-    //     for (Chips chipDeApuesta : this.betChips) {
-    //         Chips chipDelMonedero = getChipPorTipo(chipDeApuesta.getType());
-
-    //         if (chipDelMonedero == null || chipDelMonedero.getAmount() < chipDeApuesta.getAmount()) {
-    //             System.out.println("No tienes suficientes chips para asegurar la apuesta.");
-    //             return false; 
-    //         }
-    //     }
-    //     return true; 
-    // }
+    /**
+     * Comprueba si la apuesta final puede ser cubierta por el monedero.
+     * @param betEnd La apuesta final a comprobar.
+     * @param wallet El monedero del jugador.
+     * @return true si la apuesta puede ser cubierta, false en caso contrario.
+     */
+    public boolean asegurarBet(double betEnd, WalletModel wallet) {
+        // Si no se tienen suficientes fichas (chips) en el monedero, entonces manda mensaje de error
+        if (wallet.getTotalMoney() < betEnd) {
+            MC.title.outlineR("No tienes suficiente dinero en tu monedero para cubrir la apuesta.");
+            return false;
+        }
+        return true;
+    }
 
     public void agregarChipPorTipo( TypeChips tipo )
     {

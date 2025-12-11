@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 import Utilities.MC;
 import Utilities.Table;
-import Entity.Player;
 
 public class Betting {
 
@@ -17,7 +16,7 @@ public class Betting {
 
     //Constructor
     public Betting() {
-        this.betChips = new ArrayList<>(); //Incializado 
+        this.betChips = new ArrayList<>(); //Incializado
     }
 
     //Get and Setters
@@ -46,7 +45,7 @@ public class Betting {
 
     //ActionBetMenu
     /* Acciona el menu de apuestas y derivados */
-    public void actionBetMenu(Player player) {
+    public void actionBetMenu() {
         String option;
         int totalBet = 0;
         boolean end = false;
@@ -80,8 +79,7 @@ public class Betting {
 
                     /* Validacion Reciclada */
                     if (tipoRemove == null) {
-                        //Mensaje, Player.name a
-                        System.out.println("Jugador " + player.getName() + ", has insertado una ficha no válida.");
+                        System.out.println("Has incertado una ficha no vàlida");
                         continue; 
                     }
 
@@ -140,22 +138,25 @@ public class Betting {
 
 
     //-----------------------------------
-    // Las funciones de Apuesta
+    // FUNCIONES DE APUESTA
     //-----------------------------------
 
 
-    // public boolean asegurarBet(WalletModel wallet) {
+    public boolean asegurarBet(WalletModel wallet) {
+        // Itera sobre cada grupo de fichas en la apuesta actual.
+        for (Chips chipDeApuesta : this.betChips) {
+            // Busca el grupo de fichas correspondiente en el monedero del jugador.
+            Chips chipDelMonedero = wallet.getChipPorTipo(chipDeApuesta.getType());
 
-    //     for (Chips chipDeApuesta : this.betChips) {
-    //         Chips chipDelMonedero = getChipPorTipo(chipDeApuesta.getType());
-
-    //         if (chipDelMonedero == null || chipDelMonedero.getAmount() < chipDeApuesta.getAmount()) {
-    //             System.out.println("No tienes suficientes chips para asegurar la apuesta.");
-    //             return false; 
-    //         }
-    //     }
-    //     return true; 
-    // }
+            // Comprueba si el jugador tiene suficientes fichas de este tipo.
+            // Si el chip no existe en el monedero (chipDelMonedero es null) o la cantidad es insuficiente.
+            if (chipDelMonedero == null || chipDelMonedero.getAmount() < chipDeApuesta.getAmount()) {
+                MC.title.outlineR("No tienes suficientes fichas de color '" + chipDeApuesta.getType().getColor() + "' para apostar.");
+                return false; // La apuesta no se puede cubrir.
+            }
+        }
+        return true; // Si el bucle termina, el jugador tiene todas las fichas necesarias.
+    }
 
     public void agregarChipPorTipo( TypeChips tipo )
     {

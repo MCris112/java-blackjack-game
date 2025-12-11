@@ -1,3 +1,5 @@
+import Contenido.CardRank;
+import Contenido.Carta;
 import Contenido.Mazo;
 import Entity.Crupier;
 import Entity.Player;
@@ -7,6 +9,7 @@ import Utilities.Table;
 import Wallet.WalletModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -117,7 +120,7 @@ public class Game {
                 //generar automaticamente la apuesta
                 p.generateBetBot();
             }else{
-                p.getBetting().actionBetMenu(p);
+                p.getBetting().actionBetMenu();
             }
         }
 
@@ -173,9 +176,7 @@ public class Game {
         // Primera carta es AS?
         if ( this.crupier.isFirstAs() )
         {
-            //TODO preguntar si quiere asegurar? 
-            // this.Betting.asegurar();
-
+            //TODO preguntar si quiere asegurar?
         }
 
         // Dar carta a cada jugador
